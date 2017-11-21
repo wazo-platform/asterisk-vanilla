@@ -63,7 +63,7 @@ Architecture: any
 Section: comm
 Replaces: asterisk
 Conflicts: asterisk
-Provides: asteris
+Provides: asterisk
 Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, mpg123
 Breaks:
  wazo-res-amqp (<< 17.14~),
@@ -132,10 +132,13 @@ Description: Open Source Private Branch Exchange (PBX) - Wazo version
  .
   Homepage: http://www.asterisk.org.
 
-Package: asterisk-dev
+Package: asterisk-vanilla-dev
 Architecture: all
 Recommends: asterisk-vanilla
 Section: devel
+Replaces: asterisk-dev
+Conflicts: asterisk-dev
+Provides: asterisk-dev
 Depends: ${misc:Depends}
 Description: development files for asterisk
  Asterisk is an Open Source PBX and telephony toolkit.  It is, in a
@@ -169,6 +172,9 @@ Package: asterisk-vanilla-doc
 Architecture: all
 Recommends: asterisk-vanilla
 Section: doc
+Replaces: asterisk-doc
+Conflicts: asterisk-doc
+Provides: asterisk-doc
 Depends: ${misc:Depends}
 Description: Source code documentation for Asterisk
  Asterisk is an Open Source PBX and telephony toolkit.
@@ -202,6 +208,9 @@ Package: asterisk-vanilla-sounds-main
 Architecture: all
 Enhances: asterisk-vanilla
 Section: comm
+Replaces: asterisk-sounds-main
+Conflicts: asterisk-sounds-main
+Provides: asterisk-sounds-main
 Depends: ${misc:Depends}
 Description: sound files for asterisk
  Asterisk is an Open Source PBX and telephony toolkit.  It is, in a
