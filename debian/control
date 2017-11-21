@@ -1,4 +1,4 @@
-Source: asterisk
+Source: asterisk-vanilla
 Priority: optional
 Section: comm
 Maintainer: Wazo Maintainers <dev@wazo.community>
@@ -58,12 +58,12 @@ Build-Depends:
  zlib1g-dev
 Standards-Version: 3.9.6
 
-Package: asterisk
+Package: asterisk-vanilla
 Architecture: any
 Section: comm
-Replaces: asterisk11
-Conflicts: asterisk11
-Provides: asterisk11
+Replaces: asterisk
+Conflicts: asterisk
+Provides: asteris
 Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, mpg123
 Breaks:
  wazo-res-amqp (<< 17.14~),
@@ -97,13 +97,13 @@ Description: Open Source Private Branch Exchange (PBX) - Wazo version
  .
   Homepage: http://www.asterisk.org.
 
-Package: asterisk-dbg
+Package: asterisk-vanilla-dbg
 Architecture: any
 Section: comm
 Priority: extra
-Replaces: asterisk11-dbg
-Conflicts: asterisk11-dbg
-Provides: asterisk11-dbg
+Replaces: asterisk-dbg
+Conflicts: asterisk-dbg
+Provides: asterisk-dbg
 Depends: ${misc:Depends}, asterisk (= ${binary:Version})
 Description: Open Source Private Branch Exchange (PBX) - Wazo version
  Asterisk is an Open Source PBX and telephony toolkit.  It is, in a
@@ -134,7 +134,7 @@ Description: Open Source Private Branch Exchange (PBX) - Wazo version
 
 Package: asterisk-dev
 Architecture: all
-Recommends: asterisk
+Recommends: asterisk-vanilla
 Section: devel
 Depends: ${misc:Depends}
 Description: development files for asterisk
@@ -165,9 +165,9 @@ Description: development files for asterisk
  .
   Homepage: http://www.asterisk.org.
 
-Package: asterisk-doc
+Package: asterisk-vanilla-doc
 Architecture: all
-Recommends: asterisk
+Recommends: asterisk-vanilla
 Section: doc
 Depends: ${misc:Depends}
 Description: Source code documentation for Asterisk
@@ -198,9 +198,9 @@ Description: Source code documentation for Asterisk
  .
   Homepage: http://www.asterisk.org.
 
-Package: asterisk-sounds-main
+Package: asterisk-vanilla-sounds-main
 Architecture: all
-Enhances: asterisk
+Enhances: asterisk-vanilla
 Section: comm
 Depends: ${misc:Depends}
 Description: sound files for asterisk

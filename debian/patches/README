@@ -1,8 +1,0 @@
-Patch naming convention:
-
-Each patch has a prefix followed by it's name:
-	<prefix>_<patch name>
-
-The prefix is one of:
-* deb : a patch made by debian maintainers
-* xivo : a patch made for XiVO (can be waiting for upstream integration or not)
