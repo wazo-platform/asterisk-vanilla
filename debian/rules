@@ -41,7 +41,7 @@ DEB_CONFIGURE_SCRIPT_ENV += $(FETCH_ENV)
 # fetch script that always returns an error.
 DEB_MAKE_ENVVARS = PATH=$$PATH:$(CURDIR)/debian/dummyprogs
 
-configure/asterisk::
+configure/asterisk-vanilla::
 	# generate proper menuselect.makeopts
 	(cd $(BUILD_TREE); \
 		$(FETCH_ENV) $(MAKE) $(BUILDFLAGS) menuselect.makeopts)
@@ -63,28 +63,28 @@ configure/asterisk::
 	# DONE
 	touch $(BUILD_TREE)/configure-stamp
 
-build/asterisk:: 
+build/asterisk-vanilla::
 	touch $(BUILD_TREE)/build-stamp
 
 common-install-arch common-install-indep:: common-install-impl
 common-install-impl::
 	$(DEB_MAKE_ENVVARS) $(MAKE) -C $(BUILD_TREE) DESTDIR=$(CURDIR)/debian/tmp/ install samples
 
-install/asterisk::
+install/asterisk-vanilla::
 	$(DEB_MAKE_ENVVARS) $(MAKE) -C $(BUILD_TREE) DESTDIR=$(CURDIR)/debian/tmp/ install
 
-binary-install/asterisk::
+binary-install/asterisk-vanilla::
 	mkdir -p $(CURDIR)/debian/$(cdbs_curpkg)/usr/share/asterisk/bin
 	cp $(CURDIR)/debian/asterisk_fix $(CURDIR)/debian/$(cdbs_curpkg)/usr/share/asterisk/bin/
 	chmod +x $(CURDIR)/debian/$(cdbs_curpkg)/usr/share/asterisk/bin/asterisk_fix
 
-binary-install/asterisk::
+binary-install/asterisk-vanilla::
 	rm -rf debian/$(cdbs_curpkg)/var/spool/asterisk/voicemail/default
 	rm -rf debian/$(cdbs_curpkg)/var/lib/asterisk/sounds/en
 	mkdir -p debian/$(cdbs_curpkg)/usr/share/asterisk
 	mv debian/tmp/var/lib/asterisk/documentation debian/$(cdbs_curpkg)/usr/share/asterisk/
 
-install/asterisk-doc::
+install/asterisk-vanilla-doc::
 	dh_installexamples -p$(cdbs_curpkg) $(BUILD_TREE)/sample.call
 	dh_installexamples -p$(cdbs_curpkg) $(BUILD_TREE)/configs/*
 	dh_installexamples -p$(cdbs_curpkg) $(BUILD_TREE)/agi/agi-test.agi

@@ -1,3 +1,9 @@
+asterisk-vanilla (8:15.1.1-1~wazo1.2) wazo-dev; urgency=medium
+
+  * fix rules file
+
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Tue, 21 Nov 2017 15:12:55 -0500
+
 asterisk-vanilla (8:15.1.1-1~wazo1.1) wazo-dev; urgency=medium
 
   * fix control file
