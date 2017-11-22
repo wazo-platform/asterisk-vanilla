@@ -104,7 +104,7 @@ Priority: extra
 Replaces: asterisk-dbg
 Conflicts: asterisk-dbg
 Provides: asterisk-dbg
-Depends: ${misc:Depends}, asterisk (= ${binary:Version})
+Depends: ${misc:Depends}, asterisk-vanilla (= ${binary:Version})
 Description: Open Source Private Branch Exchange (PBX) - Wazo version
  Asterisk is an Open Source PBX and telephony toolkit.  It is, in a
  sense, middleware between Internet and telephony channels on the bottom,
