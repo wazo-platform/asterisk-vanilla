@@ -1,3 +1,9 @@
+asterisk-vanilla (8:15.1.1-1~wazo1.6) wazo-dev; urgency=medium
+
+  * add virtual provide
+
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Wed, 22 Nov 2017 15:14:55 -0500
+
 asterisk-vanilla (8:15.1.1-1~wazo1.5) wazo-dev; urgency=medium
 
   * fix dbg depends
