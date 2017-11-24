@@ -1,0 +1,158 @@
+diff --git a/debian/control b/debian/control
+index c27d782..f0d62b1 100644
+--- a/debian/control
++++ b/debian/control
+@@ -1,4 +1,4 @@
+-Source: asterisk
++Source: asterisk-vanilla
+ Priority: optional
+ Section: comm
+ Maintainer: Wazo Maintainers <dev@wazo.community>
+@@ -58,12 +58,12 @@ Build-Depends:
+  zlib1g-dev
+ Standards-Version: 3.9.6
+ 
+-Package: asterisk
++Package: asterisk-vanilla
+ Architecture: any
+ Section: comm
+-Replaces: asterisk11
+-Conflicts: asterisk11
+-Provides: asterisk11
++Replaces: asterisk
++Conflicts: asterisk
++Provides: asterisk-virtual
+ Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, mpg123
+ Breaks:
+  wazo-res-amqp (<< 17.14~),
+@@ -97,14 +97,14 @@ Description: Open Source Private Branch Exchange (PBX) - Wazo version
+  .
+   Homepage: http://www.asterisk.org.
+ 
+-Package: asterisk-dbg
++Package: asterisk-vanilla-dbg
+ Architecture: any
+ Section: comm
+ Priority: extra
+-Replaces: asterisk11-dbg
+-Conflicts: asterisk11-dbg
+-Provides: asterisk11-dbg
+-Depends: ${misc:Depends}, asterisk (= ${binary:Version})
++Replaces: asterisk-dbg
++Conflicts: asterisk-dbg
++Provides: asterisk-virtual-dbg
++Depends: ${misc:Depends}, asterisk-vanilla (= ${binary:Version})
+ Description: Open Source Private Branch Exchange (PBX) - Wazo version
+  Asterisk is an Open Source PBX and telephony toolkit.  It is, in a
+  sense, middleware between Internet and telephony channels on the bottom,
+@@ -132,10 +132,13 @@ Description: Open Source Private Branch Exchange (PBX) - Wazo version
+  .
+   Homepage: http://www.asterisk.org.
+ 
+-Package: asterisk-dev
++Package: asterisk-vanilla-dev
+ Architecture: all
+-Recommends: asterisk
++Recommends: asterisk-vanilla
+ Section: devel
++Replaces: asterisk-dev
++Conflicts: asterisk-dev
++Provides: asterisk-virtual-dev
+ Depends: ${misc:Depends}
+ Description: development files for asterisk
+  Asterisk is an Open Source PBX and telephony toolkit.  It is, in a
+@@ -165,10 +168,13 @@ Description: development files for asterisk
+  .
+   Homepage: http://www.asterisk.org.
+ 
+-Package: asterisk-doc
++Package: asterisk-vanilla-doc
+ Architecture: all
+-Recommends: asterisk
++Recommends: asterisk-vanilla
+ Section: doc
++Replaces: asterisk-doc
++Conflicts: asterisk-doc
++Provides: asterisk-virtual-doc
+ Depends: ${misc:Depends}
+ Description: Source code documentation for Asterisk
+  Asterisk is an Open Source PBX and telephony toolkit.
+@@ -198,10 +204,13 @@ Description: Source code documentation for Asterisk
+  .
+   Homepage: http://www.asterisk.org.
+ 
+-Package: asterisk-sounds-main
++Package: asterisk-vanilla-sounds-main
+ Architecture: all
+-Enhances: asterisk
++Enhances: asterisk-vanilla
+ Section: comm
++Replaces: asterisk-sounds-main
++Conflicts: asterisk-sounds-main
++Provides: asterisk-virtual-sounds-main
+ Depends: ${misc:Depends}
+ Description: sound files for asterisk
+  Asterisk is an Open Source PBX and telephony toolkit.  It is, in a
+diff --git a/debian/rules b/debian/rules
+index fe547f2..98a3c46 100755
+--- a/debian/rules
++++ b/debian/rules
+@@ -16,7 +16,7 @@ BUILD_TREE = .
+ # uncomment the next line to create a "MALLOC_DEBUG" version of asterisk
+ #MENUSELECT_EXTRA_ARGS := --enable MALLOC_DEBUG
+ # uncomment the next 2 lines to create a "debug" version of asterisk
+-#MENUSELECT_EXTRA_ARGS := --enable DONT_OPTIMIZE
++MENUSELECT_EXTRA_ARGS := --enable DONT_OPTIMIZE
+ #MENUSELECT_EXTRA_ARGS += --enable DEBUG_THREADS
+ # ...and the next line to be able to use the asterisk test framework
+ #MENUSELECT_EXTRA_ARGS += --enable TEST_FRAMEWORK
+@@ -41,7 +41,7 @@ DEB_CONFIGURE_SCRIPT_ENV += $(FETCH_ENV)
+ # fetch script that always returns an error.
+ DEB_MAKE_ENVVARS = PATH=$$PATH:$(CURDIR)/debian/dummyprogs
+ 
+-configure/asterisk::
++configure/asterisk-vanilla::
+ 	# generate proper menuselect.makeopts
+ 	(cd $(BUILD_TREE); \
+ 		$(FETCH_ENV) $(MAKE) $(BUILDFLAGS) menuselect.makeopts)
+@@ -63,28 +63,28 @@ configure/asterisk::
+ 	# DONE
+ 	touch $(BUILD_TREE)/configure-stamp
+ 
+-build/asterisk:: 
++build/asterisk-vanilla::
+ 	touch $(BUILD_TREE)/build-stamp
+ 
+ common-install-arch common-install-indep:: common-install-impl
+ common-install-impl::
+ 	$(DEB_MAKE_ENVVARS) $(MAKE) -C $(BUILD_TREE) DESTDIR=$(CURDIR)/debian/tmp/ install samples
+ 
+-install/asterisk::
++install/asterisk-vanilla::
+ 	$(DEB_MAKE_ENVVARS) $(MAKE) -C $(BUILD_TREE) DESTDIR=$(CURDIR)/debian/tmp/ install
+ 
+-binary-install/asterisk::
++binary-install/asterisk-vanilla::
+ 	mkdir -p $(CURDIR)/debian/$(cdbs_curpkg)/usr/share/asterisk/bin
+ 	cp $(CURDIR)/debian/asterisk_fix $(CURDIR)/debian/$(cdbs_curpkg)/usr/share/asterisk/bin/
+ 	chmod +x $(CURDIR)/debian/$(cdbs_curpkg)/usr/share/asterisk/bin/asterisk_fix
+ 
+-binary-install/asterisk::
++binary-install/asterisk-vanilla::
+ 	rm -rf debian/$(cdbs_curpkg)/var/spool/asterisk/voicemail/default
+ 	rm -rf debian/$(cdbs_curpkg)/var/lib/asterisk/sounds/en
+ 	mkdir -p debian/$(cdbs_curpkg)/usr/share/asterisk
+ 	mv debian/tmp/var/lib/asterisk/documentation debian/$(cdbs_curpkg)/usr/share/asterisk/
+ 
+-install/asterisk-doc::
++install/asterisk-vanilla-doc::
+ 	dh_installexamples -p$(cdbs_curpkg) $(BUILD_TREE)/sample.call
+ 	dh_installexamples -p$(cdbs_curpkg) $(BUILD_TREE)/configs/*
+ 	dh_installexamples -p$(cdbs_curpkg) $(BUILD_TREE)/agi/agi-test.agi
+diff --git a/debian/source/options b/debian/source/options
+index 0fffec6..984f95d 100644
+--- a/debian/source/options
++++ b/debian/source/options
+@@ -1 +1 @@
+-extend-diff-ignore = "(^|/)(\.dockerignore|Dockerfile|README.md|LICENSE|integration_tests.*)$"
++extend-diff-ignore = "(^|/)(\.dockerignore|Dockerfile|README.md|LICENSE|integration_tests.*|vanilla.patch)$"
