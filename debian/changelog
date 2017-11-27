@@ -1,3 +1,9 @@
+asterisk-vanilla (8:15.1.1-1~wazo1.7) wazo-dev; urgency=medium
+
+  * ignore patch file at build time
+
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Mon, 27 Nov 2017 10:15:36 -0500
+
 asterisk-vanilla (8:15.1.1-1~wazo1.6) wazo-dev; urgency=medium
 
   * add virtual provide
