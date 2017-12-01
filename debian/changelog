@@ -1,46 +1,16 @@
-asterisk-vanilla (8:15.1.1-1~wazo1.7) wazo-dev; urgency=medium
+asterisk-vanilla (8:15.1.2-1~wazo2) wazo-dev; urgency=medium
 
-  * ignore patch file at build time
+  * bump version
 
- -- Wazo Maintainers <dev+pkg@wazo.community>  Mon, 27 Nov 2017 10:15:36 -0500
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Fri, 01 Dec 2017 11:38:46 -0500
 
-asterisk-vanilla (8:15.1.1-1~wazo1.6) wazo-dev; urgency=medium
+asterisk (8:15.1.2-1~wazo1) wazo-dev; urgency=medium
 
-  * add virtual provide
+  * update to 15.1.2
 
- -- Wazo Maintainers <dev+pkg@wazo.community>  Wed, 22 Nov 2017 15:14:55 -0500
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Fri, 01 Dec 2017 10:40:31 -0500
 
-asterisk-vanilla (8:15.1.1-1~wazo1.5) wazo-dev; urgency=medium
-
-  * fix dbg depends
-
- -- Wazo Maintainers <dev+pkg@wazo.community>  Wed, 22 Nov 2017 13:45:06 -0500
-
-asterisk-vanilla (8:15.1.1-1~wazo1.4) wazo-dev; urgency=medium
-
-  * fix service file name
-
- -- Wazo Maintainers <dev+pkg@wazo.community>  Wed, 22 Nov 2017 10:53:07 -0500
-
-asterisk-vanilla (8:15.1.1-1~wazo1.3) wazo-dev; urgency=medium
-
-  * fix debian file names
-
- -- Wazo Maintainers <dev+pkg@wazo.community>  Tue, 21 Nov 2017 16:29:01 -0500
-
-asterisk-vanilla (8:15.1.1-1~wazo1.2) wazo-dev; urgency=medium
-
-  * fix rules file
-
- -- Wazo Maintainers <dev+pkg@wazo.community>  Tue, 21 Nov 2017 15:12:55 -0500
-
-asterisk-vanilla (8:15.1.1-1~wazo1.1) wazo-dev; urgency=medium
-
-  * fix control file
-
- -- Wazo Maintainers <dev+pkg@wazo.community>  Tue, 21 Nov 2017 14:14:19 -0500
-
-asterisk-vanilla (8:15.1.1-1~wazo1) wazo-dev; urgency=medium
+asterisk (8:15.1.1-1~wazo1) wazo-dev; urgency=medium
 
   * update to 15.1.1
 
