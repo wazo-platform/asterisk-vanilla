@@ -1,1 +1,1 @@
-extend-diff-ignore = "(^|/)(\.dockerignore|Dockerfile|README.md|LICENSE|integration_tests.*|vanilla.patch)$"
+extend-diff-ignore = "(^|/)(\.dockerignore|Dockerfile|README.md|LICENSE|integration_tests.*|contribs.*|vanilla.patch)$"
