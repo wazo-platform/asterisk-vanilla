@@ -22,7 +22,7 @@ index c27d782..f0d62b1 100644
 +Replaces: asterisk
 +Conflicts: asterisk
 +Provides: asterisk-virtual
- Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, mpg123
+ Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, mpg123, wazo-asterisk-config
  Breaks:
   wazo-res-amqp (<< 17.14~),
 @@ -97,14 +97,14 @@ Description: Open Source Private Branch Exchange (PBX) - Wazo version
