@@ -119,7 +119,7 @@ index fe547f2..98a3c46 100755
  	# DONE
  	touch $(BUILD_TREE)/configure-stamp
  
--build/asterisk:: 
+-build/asterisk::
 +build/asterisk-vanilla::
  	touch $(BUILD_TREE)/build-stamp
  
