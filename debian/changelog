@@ -1,4 +1,16 @@
-asterisk-vanilla (8:16.4.0-1~wazo2) wazo-dev-stretch; urgency=medium
+asterisk-vanilla (8:16.4.0-1~wazo4) wazo-dev-stretch; urgency=medium
+
+  * force rebuild for the vanilla and debug packages
+
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Tue, 18 Jun 2019 10:04:38 -0400
+
+asterisk (8:16.4.0-1~wazo3) wazo-dev-stretch; urgency=medium
+
+  * add the voicemail greeting API
+
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Mon, 17 Jun 2019 14:47:41 -0400
+
+asterisk (8:16.4.0-1~wazo2) wazo-dev-stretch; urgency=medium
 
   * upgrade to asterisk 16.4.0
 
