@@ -155,4 +155,4 @@ index 0fffec6..984f95d 100644
 +++ b/debian/source/options
 @@ -1 +1 @@
 -extend-diff-ignore = "(^|/)(\.dockerignore|AUTHORS|Dockerfile|README.md|CHANGELOG.md|LICENSE|integration_tests.*|contribs.*)$"
-+extend-diff-ignore = "(^|/)(\.dockerignore|AUTHORS|Dockerfile|README.md|CHANGELOG.md|LICENSE|integration_tests.*|contribs.*|vanilla.patch)$"
++extend-diff-ignore = "(^|/)(\.dockerignore|AUTHORS|Dockerfile|README.md|CHANGELOG.md|LICENSE|integration_tests.*|contribs.*|zuul.yaml|vanilla.patch)$"
