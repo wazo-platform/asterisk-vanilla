@@ -3,13 +3,13 @@
 
 PKG  = $(word 2,$(shell dpkg-parsechangelog | grep Source))
 VER ?= $(shell dpkg-parsechangelog | grep Version: | awk -F': ' '{print $$NF}' | sed -ne 's/^\(\([0-9]\+\):\)\?\(.*\)-.*/\3/p')
-ASTERISK_URL_DOWNLOAD = "http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-16.6.1.tar.gz"
+ASTERISK_URL_DOWNLOAD = "http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-16.6.2.tar.gz"
 
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/autotools.mk
 
 DEB_SHLIBDEPS_INCLUDE := $(CURDIR)/debian/tmp/usr/lib
-DEB_DH_SHLIBDEPS_ARGS_ALL += -u--ignore-missing-info
+DEB_DH_SHLIBDEPS_ARGS_ALL += -u--ignore-missing-info -Xchan_also -Xchan_console -Xchan_dahdi -Xchan_mgcp -Xchan_oss -Xchan_phone -Xchan_sip -Xchan_skinny -Xchan_unistim -Xchan_motif -Xres_xmpp -Xcdr_radius -Xcdr_tds -Xcdr_pgsql -Xcel_radius -Xcel_tds -Xapp_jack -Xres_calendat -Xres_calendar_caldav -Xres_calendar_ews -Xres_calendar_exchange -Xres_calendar_icalendar -Xres_xmpp -Xres_snmp
 DEB_MAKE_INVOKE = $(DEB_MAKE_ENVVARS) $(MAKE) -C $(DEB_BUILDDIR)
 BUILD_TREE = .
 
