@@ -1,5 +1,5 @@
 diff --git a/debian/control b/debian/control
-index d229196..46d4017 100644
+index 8da0908..ee170fe 100644
 --- a/debian/control
 +++ b/debian/control
 @@ -1,4 +1,4 @@
@@ -8,7 +8,7 @@ index d229196..46d4017 100644
  Priority: optional
  Section: comm
  Maintainer: Wazo Maintainers <dev@wazo.community>
-@@ -59,12 +59,12 @@ Build-Depends:
+@@ -60,12 +60,12 @@ Build-Depends:
   zlib1g-dev
  Standards-Version: 3.9.6
  
@@ -25,7 +25,7 @@ index d229196..46d4017 100644
  Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, mpg123, wazo-asterisk-config
  Breaks:
   wazo-res-amqp (<< 17.14~),
-@@ -97,14 +97,14 @@ Description: Open Source Private Branch Exchange (PBX) - Wazo version
+@@ -98,14 +98,14 @@ Description: Open Source Private Branch Exchange (PBX) - Wazo version
   .
   This Debian package contains the classic Asterisk binary.
  
@@ -45,7 +45,7 @@ index d229196..46d4017 100644
  Homepage: http://www.asterisk.org
  Description: Open Source Private Branch Exchange (PBX) - Wazo version
   Asterisk is an Open Source PBX and telephony toolkit.  It is, in a
-@@ -131,10 +131,13 @@ Description: Open Source Private Branch Exchange (PBX) - Wazo version
+@@ -132,10 +132,13 @@ Description: Open Source Private Branch Exchange (PBX) - Wazo version
   .
   This package contains gdb debugging symbols for the classic Asterisk binary.
  
@@ -61,7 +61,7 @@ index d229196..46d4017 100644
  Depends: ${misc:Depends}
  Homepage: http://www.asterisk.org
  Description: development files for asterisk
-@@ -163,10 +166,13 @@ Description: development files for asterisk
+@@ -164,10 +167,13 @@ Description: development files for asterisk
   This package contains the include files used if you wish to compile a
   package which requires asterisk source file headers.
  
@@ -77,7 +77,7 @@ index d229196..46d4017 100644
  Depends: ${misc:Depends}
  Homepage: http://www.asterisk.org
  Description: Source code documentation for Asterisk
-@@ -195,10 +201,13 @@ Description: Source code documentation for Asterisk
+@@ -196,10 +202,13 @@ Description: Source code documentation for Asterisk
   .
    This package contains the documentation for configuring an Asterisk system.
  
@@ -94,7 +94,7 @@ index d229196..46d4017 100644
  Homepage: http://www.asterisk.org
  Description: sound files for asterisk
 diff --git a/debian/rules b/debian/rules
-index fe547f2..98a3c46 100755
+index 9e6733e..b455b88 100755
 --- a/debian/rules
 +++ b/debian/rules
 @@ -16,7 +16,7 @@ BUILD_TREE = .
@@ -115,7 +115,7 @@ index fe547f2..98a3c46 100755
  	# generate proper menuselect.makeopts
  	(cd $(BUILD_TREE); \
  		$(FETCH_ENV) $(MAKE) $(BUILDFLAGS) menuselect.makeopts)
-@@ -63,28 +63,28 @@ configure/asterisk::
+@@ -64,25 +64,25 @@ configure/asterisk::
  	# DONE
  	touch $(BUILD_TREE)/configure-stamp
  
@@ -131,6 +131,10 @@ index fe547f2..98a3c46 100755
 +install/asterisk-vanilla::
  	$(DEB_MAKE_ENVVARS) $(MAKE) -C $(BUILD_TREE) DESTDIR=$(CURDIR)/debian/tmp/ install
  
+-install/asterisk-dev::
++install/asterisk-vanilla-dev::
+ 	$(DEB_MAKE_ENVVARS) $(MAKE) -C $(BUILD_TREE) DESTDIR=$(CURDIR)/debian/tmp/ install-headers
+ 
 -binary-install/asterisk::
 +binary-install/asterisk-vanilla::
  	mkdir -p $(CURDIR)/debian/$(cdbs_curpkg)/usr/share/asterisk/bin
@@ -142,10 +146,7 @@ index fe547f2..98a3c46 100755
  	rm -rf debian/$(cdbs_curpkg)/var/spool/asterisk/voicemail/default
  	rm -rf debian/$(cdbs_curpkg)/var/lib/asterisk/sounds/en
  	mkdir -p debian/$(cdbs_curpkg)/usr/share/asterisk
- 	mv debian/tmp/var/lib/asterisk/documentation debian/$(cdbs_curpkg)/usr/share/asterisk/
-
--build/asterisk-doc::
-+build/asterisk-vanilla-doc::
+@@ -92,7 +92,7 @@ build/asterisk-doc::
  	mkdir -p $(BUILD_TREE)/doc/json
  	wazo-asterisk-doc-extractor $(BUILD_TREE)/doc/core-en_US.xml > $(BUILD_TREE)/doc/json/pjsip.json
  
@@ -155,7 +156,7 @@ index fe547f2..98a3c46 100755
  	dh_installexamples -p$(cdbs_curpkg) $(BUILD_TREE)/configs/*
  	dh_installexamples -p$(cdbs_curpkg) $(BUILD_TREE)/agi/agi-test.agi
 diff --git a/debian/source/options b/debian/source/options
-index 0fffec6..984f95d 100644
+index e624ada..d72363e 100644
 --- a/debian/source/options
 +++ b/debian/source/options
 @@ -1 +1 @@
