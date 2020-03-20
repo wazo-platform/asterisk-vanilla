@@ -1,4 +1,16 @@
-asterisk-vanilla (8:16.8.0-1~wazo5) wazo-dev-buster; urgency=medium
+asterisk-vanilla (8:17.3.0-1~wazo2) wazo-dev-buster; urgency=medium
+
+  * Rebuild for vanilla and debug
+
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Fri, 20 Mar 2020 08:02:58 -0400
+
+asterisk (8:17.3.0-1~wazo1) wazo-dev-buster; urgency=medium
+
+  * Asterisk 17.3.0
+
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Thu, 12 Mar 2020 13:52:28 -0400
+
+asterisk (8:16.8.0-1~wazo5) wazo-dev-buster; urgency=medium
 
   * Backport upstream patch for bad audio due to incomplete TLS/SRTP setup [1]
 

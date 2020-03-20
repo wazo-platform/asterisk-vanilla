@@ -32,7 +32,7 @@ DEB_MAKE_INVOKE += MENUSELECT_MOH= \
 
 # Debian needs
 DEB_DH_INSTALLINIT_ARGS = --name asterisk -- defaults 30 70
-DEB_CONFIGURE_EXTRA_FLAGS = --without-h323 --without-misdn --with-jansson-bundled
+DEB_CONFIGURE_EXTRA_FLAGS = --without-misdn --with-jansson-bundled
 DEB_CONFIGURE_SCRIPT_ENV += $(FETCH_ENV)
 
 # on the system. However it is generally not a good idea to actually
@@ -74,6 +74,9 @@ common-install-impl::
 install/asterisk-vanilla::
 	$(DEB_MAKE_ENVVARS) $(MAKE) -C $(BUILD_TREE) DESTDIR=$(CURDIR)/debian/tmp/ install
 
+install/asterisk-vanilla-dev::
+	$(DEB_MAKE_ENVVARS) $(MAKE) -C $(BUILD_TREE) DESTDIR=$(CURDIR)/debian/tmp/ install-headers
+
 binary-install/asterisk-vanilla::
 	mkdir -p $(CURDIR)/debian/$(cdbs_curpkg)/usr/share/asterisk/bin
 	cp $(CURDIR)/debian/asterisk_fix $(CURDIR)/debian/$(cdbs_curpkg)/usr/share/asterisk/bin/
@@ -85,11 +88,11 @@ binary-install/asterisk-vanilla::
 	mkdir -p debian/$(cdbs_curpkg)/usr/share/asterisk
 	mv debian/tmp/var/lib/asterisk/documentation debian/$(cdbs_curpkg)/usr/share/asterisk/
 
-build/asterisk-vanilla-doc::
+build/asterisk-doc::
 	mkdir -p $(BUILD_TREE)/doc/json
 	wazo-asterisk-doc-extractor $(BUILD_TREE)/doc/core-en_US.xml > $(BUILD_TREE)/doc/json/pjsip.json
 
-install/asterisk-doc::
+install/asterisk-vanilla-doc::
 	dh_installexamples -p$(cdbs_curpkg) $(BUILD_TREE)/sample.call
 	dh_installexamples -p$(cdbs_curpkg) $(BUILD_TREE)/configs/*
 	dh_installexamples -p$(cdbs_curpkg) $(BUILD_TREE)/agi/agi-test.agi
