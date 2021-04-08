@@ -62,7 +62,6 @@ These jobs will apply `vanilla.patch` and `debug.patch` on the master branch of 
 Then, it makes a diff and push it on [asterisk-vanilla][github-asterisk-vanilla] and
 [asterisk-debug][github-asterisk-debug] repositories.
 
-
 ### Troubleshooting
 
 When the patch or the patch context change, it cannot be applied automatically
