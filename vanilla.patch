@@ -102,7 +102,7 @@ index 012f4a5..51f0964 100644
 --- a/zuul.yaml
 +++ b/zuul.yaml
 @@ -3,13 +3,13 @@
-       - debian-packaging-template
+       - debian-packaging-bullseye
      check:
        jobs:
 -        - asterisk-tox-integration
