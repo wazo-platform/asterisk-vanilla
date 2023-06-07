@@ -116,5 +116,5 @@ index 012f4a5..51f0964 100644
 -    name: asterisk-tox-integration
 +    name: asterisk-vanilla-tox-integration
      description: Run asterisk integration tests
-     parent: wazo-tox-integration
+     parent: wazo-tox-integration-py39
      vars:
