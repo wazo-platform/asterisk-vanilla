@@ -1,10 +1,10 @@
 - project:
     templates:
       - debian-packaging-bullseye
-    check:
+    wazo-check:
       jobs:
         - asterisk-vanilla-tox-integration
-    gate:
+    wazo-gate:
       jobs:
         - asterisk-vanilla-tox-integration
 
