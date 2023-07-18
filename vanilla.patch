@@ -103,11 +103,11 @@ index 012f4a5..51f0964 100644
 +++ b/zuul.yaml
 @@ -3,13 +3,13 @@
        - debian-packaging-bullseye
-     check:
+     wazo-check:
        jobs:
 -        - asterisk-tox-integration
 +        - asterisk-vanilla-tox-integration
-     gate:
+     wazo-gate:
        jobs:
 -        - asterisk-tox-integration
 +        - asterisk-vanilla-tox-integration
