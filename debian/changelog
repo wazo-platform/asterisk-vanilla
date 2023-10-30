@@ -1,4 +1,10 @@
-asterisk-vanilla (8:20.4.0-1~wazo9) wazo-dev-bullseye; urgency=medium
+asterisk-vanilla (8:20.4.0-1~wazo10) wazo-dev-bullseye; urgency=medium
+
+  * Add service file
+
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Mon, 30 Oct 2023 14:17:14 -0400
+
+asterisk (8:20.4.0-1~wazo9) wazo-dev-bullseye; urgency=medium
 
   * backport Asterisk memory leak fix
 
