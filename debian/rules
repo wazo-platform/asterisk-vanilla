@@ -128,6 +128,12 @@ override_dh_auto_install:
 override_dh_strip:
 	dh_strip -a --dbgsym-migration='asterisk-vanilla-dbg (<< 8:20.1.0-1~wazo2.deb10)'
 
+override_dh_systemd_enable:
+	dh_systemd_enable --name=asterisk
+
+override_dh_installinit:
+	dh_installinit --name=asterisk
+
 .PHONY: get-orig-source
 
 get-orig-source:
