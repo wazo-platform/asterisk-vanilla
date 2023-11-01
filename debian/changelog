@@ -1,14 +1,14 @@
-asterisk-vanilla (8:20.5.0-1~wazo2) wazo-dev-bullseye; urgency=medium
+asterisk-vanilla (8:20.5.0-1~wazo3) wazo-dev-bullseye; urgency=medium
 
-  * fix patch file
+  * force rebuild for asterisk-vanilla
 
- -- Wazo Maintainers <dev+pkg@wazo.community>  Wed, 01 Nov 2023 11:56:57 -0400
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Wed, 01 Nov 2023 13:23:53 -0400
 
-asterisk-vanilla (8:20.4.0-1~wazo10) wazo-dev-bullseye; urgency=medium
+asterisk (8:20.5.0-1~wazo1) wazo-dev-bullseye; urgency=medium
 
-  * Add service file
+  * Asterisk 20.5.0
 
- -- Wazo Maintainers <dev+pkg@wazo.community>  Mon, 30 Oct 2023 14:17:14 -0400
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Tue, 31 Oct 2023 08:44:23 -0400
 
 asterisk (8:20.4.0-1~wazo9) wazo-dev-bullseye; urgency=medium
 
