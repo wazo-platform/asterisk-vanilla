@@ -69,7 +69,7 @@ index 3432863..8043869 100644
  Description: Sound files for Asterisk
   Asterisk is an Open Source PBX and telephony toolkit.
 diff --git a/debian/rules b/debian/rules
-index 6224da3..20fd622 100755
+index 6224da3..4315188 100755
 --- a/debian/rules
 +++ b/debian/rules
 @@ -13,7 +13,7 @@
@@ -81,7 +81,7 @@ index 6224da3..20fd622 100755
  #MENUSELECT_EXTRA_ARGS += --enable DEBUG_THREADS
  # ...and the next line to be able to use the asterisk test framework
  #MENUSELECT_EXTRA_ARGS += --enable TEST_FRAMEWORK
-@@ -126,7 +126,7 @@ override_dh_auto_install:
+@@ -126,7 +126,13 @@ override_dh_auto_install:
  	$(RM) -f $(CURDIR)/debian/tmp/usr/sbin/refcounter
  
  override_dh_strip:
@@ -96,6 +96,7 @@ index 6224da3..20fd622 100755
  
  .PHONY: get-orig-source
  
+
 diff --git a/debian/source/options b/debian/source/options
 index e624ada..d72363e 100644
 --- a/debian/source/options
