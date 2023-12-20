@@ -1,5 +1,40 @@
+diff --git a/Jenkinsfile b/Jenkinsfile
+index 1a93771..cbb909a 100644
+--- a/Jenkinsfile
++++ b/Jenkinsfile
+@@ -12,7 +12,7 @@ pipeline {
+     timestamps()
+     buildDiscarder(logRotator(numToKeepStr: '10'))
+     throttleJobProperty(
+-      categories: ['asterisk'],
++      categories: ['asterisk-vanilla'],
+       throttleEnabled: true,
+       throttleOption: 'category'
+     )
+@@ -35,21 +35,8 @@ pipeline {
+         ]
+       }
+     }
+-    stage('Docker build') {
+-      steps {
+-        sh "docker build --no-cache -t wazoplatform/${JOB_NAME}:latest ."
+-      }
+-    }
+-    stage('Docker publish') {
+-      steps {
+-        sh "docker push wazoplatform/${JOB_NAME}:latest"
+-      }
+-    }
+   }
+   post {
+     success {
+-      build wait: false, job: 'asterisk-to-asterisk-vanilla'
+-      build wait: false, job: 'asterisk-to-asterisk-debug'
+     }
+     failure {
+       emailext to: "${MAIL_RECIPIENTS}", subject: '${DEFAULT_SUBJECT}', body: '${DEFAULT_CONTENT}'
 diff --git a/debian/control b/debian/control
-index 3432863..8043869 100644
+index 7541e44..7375af2 100644
 --- a/debian/control
 +++ b/debian/control
 @@ -1,4 +1,4 @@
@@ -8,7 +43,7 @@ index 3432863..8043869 100644
  Priority: optional
  Section: comm
  Maintainer: Wazo Maintainers <dev@wazo.community>
-@@ -51,8 +51,11 @@ Build-Depends:
+@@ -49,8 +49,11 @@ Build-Depends:
  Standards-Version: 3.9.6
  Homepage: http://www.asterisk.org/
  
@@ -21,7 +56,7 @@ index 3432863..8043869 100644
  Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, mpg123, wazo-asterisk-config
  Breaks:
   wazo-res-amqp (<< 17.14~),
-@@ -85,31 +88,40 @@ Description: Open Source Private Branch Exchange (PBX) - Wazo version
+@@ -83,31 +86,40 @@ Description: Open Source Private Branch Exchange (PBX) - Wazo version
   .
   This software was heavily patched by Debian and Wazo.
  
@@ -96,16 +131,15 @@ index 6224da3..4315188 100755
  
  .PHONY: get-orig-source
  
-
 diff --git a/debian/source/options b/debian/source/options
-index e624ada..d72363e 100644
+index 08c063e..f88efc3 100644
 --- a/debian/source/options
 +++ b/debian/source/options
 @@ -1 +1 @@
--extend-diff-ignore = "(^|/)(\.dockerignore|AUTHORS|Dockerfile|README.md|CHANGELOG.md|LICENSE|integration_tests.*|contribs.*|zuul.yaml|tox.ini)$"
-+extend-diff-ignore = "(^|/)(\.dockerignore|AUTHORS|Dockerfile|README.md|CHANGELOG.md|LICENSE|integration_tests.*|contribs.*|zuul.yaml|tox.ini|vanilla.patch)$"
+-extend-diff-ignore = "(^|/)(\.dockerignore|AUTHORS|Dockerfile|README.md|CHANGELOG.md|LICENSE|integration_tests.*|contribs.*|zuul.yaml|tox.ini|Jenkinsfile)$"
++extend-diff-ignore = "(^|/)(\.dockerignore|AUTHORS|Dockerfile|README.md|CHANGELOG.md|LICENSE|integration_tests.*|contribs.*|zuul.yaml|tox.ini|Jenkinsfile|vanilla.patch)$"
 diff --git a/zuul.yaml b/zuul.yaml
-index 012f4a5..51f0964 100644
+index 205e50c..061d1cc 100644
 --- a/zuul.yaml
 +++ b/zuul.yaml
 @@ -3,13 +3,13 @@
