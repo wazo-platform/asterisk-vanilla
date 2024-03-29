@@ -1,4 +1,16 @@
-asterisk-vanilla (8:20.5.2-1~wazo3) wazo-dev-bullseye; urgency=medium
+asterisk-vanilla (8:21.1.0-1~wazo2) wazo-dev-bullseye; urgency=medium
+
+  * force rebuild for asterisk-vanilla
+
+ -- Wazo Maintainers <dev@wazo.community>  Fri, 29 Mar 2024 09:32:37 +0100
+
+asterisk (8:21.1.0-1~wazo1) wazo-dev-bullseye; urgency=medium
+
+  * Asterisk 21.1.0
+
+ -- Wazo Maintainers <dev@wazo.community>  Mon, 11 Mar 2024 17:46:41 +0100
+
+asterisk (8:20.5.2-1~wazo3) wazo-dev-bullseye; urgency=medium
 
   * Remove asterisk_fix script
 
