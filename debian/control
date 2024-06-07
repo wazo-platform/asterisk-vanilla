@@ -31,7 +31,6 @@ Build-Depends:
  libsqlite3-dev,
  libsrtp2-dev,
  libssl-dev,
- libtcmalloc-minimal4,
  libunbound-dev,
  liburiparser-dev,
  libvorbis-dev,
@@ -55,7 +54,7 @@ Architecture: any
 Replaces: asterisk
 Conflicts: asterisk
 Provides: asterisk-virtual
-Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, mpg123, wazo-asterisk-config
+Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, libtcmalloc-minimal4, mpg123, wazo-asterisk-config
 Breaks:
  wazo-res-amqp (<< 17.14~),
  wazo-res-stasis-amqp (<< 17.14~),
