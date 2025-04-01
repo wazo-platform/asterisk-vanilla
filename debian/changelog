@@ -1,8 +1,8 @@
-asterisk-vanilla (8:22.3.0-1~wazo2) wazo-dev-bullseye; urgency=medium
+asterisk-vanilla (8:22.2.0-1~wazo6) wazo-dev-bullseye; urgency=medium
 
-  * Asterisk 22.3.0
+  * Rebuild
 
- -- Wazo Maintainers <dev+pkg@wazo.community>  Thu, 27 Mar 2025 13:32:44 -0400
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Tue, 01 Apr 2025 11:31:54 -0400
 
 asterisk (8:22.2.0-1~wazo5) wazo-dev-bullseye; urgency=medium
 
