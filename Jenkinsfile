@@ -1,3 +1,5 @@
+def version = null
+
 pipeline {
   agent any
   triggers {
