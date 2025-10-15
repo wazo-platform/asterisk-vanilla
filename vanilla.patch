@@ -137,14 +137,14 @@ index 08c063e..f88efc3 100644
 --- a/debian/source/options
 +++ b/debian/source/options
 @@ -1 +1 @@
--extend-diff-ignore = "(^|/)(\.dockerignore|AUTHORS|Dockerfile|README.md|CHANGELOG.md|LICENSE|integration_tests.*|contribs.*|zuul.yaml|tox.ini|Jenkinsfile|.lastclean)$"
-+extend-diff-ignore = "(^|/)(\.dockerignore|AUTHORS|Dockerfile|README.md|CHANGELOG.md|LICENSE|integration_tests.*|contribs.*|zuul.yaml|tox.ini|Jenkinsfile|.lastclean|vanilla.patch)$"
+-extend-diff-ignore = "(^|/)(\.dockerignore|AUTHORS|Dockerfile|README.md|CHANGELOG.md|LICENSE|integration_tests.*|contribs.*|zuul.yaml|tox.ini|Jenkinsfile)$"
++extend-diff-ignore = "(^|/)(\.dockerignore|AUTHORS|Dockerfile|README.md|CHANGELOG.md|LICENSE|integration_tests.*|contribs.*|zuul.yaml|tox.ini|Jenkinsfile|vanilla.patch)$"
 diff --git a/zuul.yaml b/zuul.yaml
 index 205e50c..061d1cc 100644
 --- a/zuul.yaml
 +++ b/zuul.yaml
 @@ -3,13 +3,13 @@
-       - debian-packaging-bullseye
+       - debian-packaging-bookworm
      wazo-check:
        jobs:
 -        - asterisk-tox-integration
@@ -158,5 +158,5 @@ index 205e50c..061d1cc 100644
 -    name: asterisk-tox-integration
 +    name: asterisk-vanilla-tox-integration
      description: Run asterisk integration tests
-     parent: wazo-tox-integration-py39
+     parent: wazo-tox-integration-py311
      vars:
