@@ -1,26 +1,19 @@
 diff --git a/Jenkinsfile b/Jenkinsfile
-index 300f0ad..a791540 100644
+index 5b9e40e..5d667bd 100644
 --- a/Jenkinsfile
 +++ b/Jenkinsfile
-@@ -12,7 +12,7 @@ pipeline {
-     timestamps()
-     buildDiscarder(logRotator(numToKeepStr: '10'))
-     throttleJobProperty(
--      categories: ['asterisk'],
-+      categories: ['asterisk-vanilla'],
-       throttleEnabled: true,
-       throttleOption: 'category'
-     )
-@@ -35,22 +35,8 @@ pipeline {
-         ]
+@@ -49,28 +49,8 @@ pipeline {
+         }
        }
      }
 -    stage('Docker build') {
+-      when { expression { !isRc } }
 -      steps {
 -        sh "docker build --no-cache -t wazoplatform/${JOB_NAME}:latest ."
 -      }
 -    }
 -    stage('Docker publish') {
+-      when { expression { !isRc } }
 -      steps {
 -        sh "docker push wazoplatform/${JOB_NAME}:latest"
 -      }
@@ -28,8 +21,12 @@ index 300f0ad..a791540 100644
    }
    post {
 -    success {
--      build wait: false, job: 'asterisk-to-asterisk-vanilla'
--      build wait: false, job: 'asterisk-to-asterisk-debug'
+-      script {
+-        if (!isRc) {
+-          build wait: false, job: 'asterisk-to-asterisk-vanilla'
+-          build wait: false, job: 'asterisk-to-asterisk-debug'
+-        }
+-      }
 -    }
      failure {
        emailext to: "${MAIL_RECIPIENTS}", subject: '${DEFAULT_SUBJECT}', body: '${DEFAULT_CONTENT}'
